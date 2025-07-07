@@ -2,7 +2,9 @@ services:
   - type: web
     name: crypto-summary-bot
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install --no-binary :all: psycopg2
+      pip install -r requirements.txt
     startCommand: python main.py
     envVars:
       - key: TELEGRAM_TOKEN
@@ -19,4 +21,4 @@ services:
 databases:
   - name: crypto-bot-db
     databaseName: crypto_bot
-    user: crypto_bot_user 
+    user: crypto_bot_user
