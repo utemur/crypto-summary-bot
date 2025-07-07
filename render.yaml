@@ -3,6 +3,7 @@ services:
     name: crypto-summary-bot
     env: python
     buildCommand: |
+      pip uninstall -y psycopg2 psycopg2-binary
       pip install --no-binary :all: psycopg2
       pip install -r requirements.txt
     startCommand: python main.py
